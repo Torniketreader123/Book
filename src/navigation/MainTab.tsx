@@ -3,6 +3,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import {Image} from 'react-native';
 import ProfileScreen from '../screens/ProfileScreen';
+import SignInScreen from '../screens/SignInScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -10,11 +11,25 @@ const icons = {
   home: require('../assets/home.png'),
   settings: require('../assets/settings.png'),
   profile: require('../assets/profile.png'),
+
 };
 
 export default function MainTabs() {
   return (
     <Tab.Navigator>
+         <Tab.Screen
+        name="Sign in"
+        component={SignInScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Image
+              source={icons.profile}
+              style={{height: size, width: size}}
+              tintColor={color}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -54,6 +69,7 @@ export default function MainTabs() {
           ),
         }}
       />
+   
     </Tab.Navigator>
   );
 }
